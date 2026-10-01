@@ -79,7 +79,61 @@
             font-style: normal;
             font-display: swap;
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--fb);
+            font-size: 17px;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .max {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .hdr {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 1.5px solid var(--ink);
+            background: rgba(254, 252, 253, 0.9);
+        }
+
+        .hdr-in {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            min-height: 56px;
+            padding: 8px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .logo-img {
+            height: 34px;
+            width: auto;
+            cursor: pointer;
+            display: block;
+        }
     </style>
 </head>
 
-</html>s
+</html>
