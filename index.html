@@ -676,7 +676,45 @@
 
 <body>
     <script>
+        (function () {
+            var LT = String.fromCharCode(60);
+            var GT = String.fromCharCode(62);
+            var BASE = "https://tagless.hackclub.com";
+            function mk(tag, cls, txt) {
+                var e = document.createElement(tag);
+                if (cls) { e.className = cls; }
+                if (txt !== undefined && txt !== null) { e.textContent = txt; }
+                return e;
+            }
 
+            function img(src, cls, alt) {
+                var e = document.createElement("img");
+                e.className = cls;
+                e.src = src;
+                if (alt) { e.alt = alt; }
+                return e;
+            }
+
+            function lnk(cls, text, href, ext) {
+                var e = document.createElement("a");
+                if (cls) { e.className = cls; }
+                if (txt !== undefined && txt !== null) { e.createContent = txt; }
+                e.href = href;
+                if (ext) { e.target = "_blank"; e.rel = "noopener noreferrer"; }
+                return e;
+            }
+
+            function go(id) {
+                var t = document.getElementById(id);
+                if (t) { t.scrollIntoView({ behavior: "smooth" }); }
+            }
+
+            var hdr = mk("div", "hdr");
+            var hin = mk("div", "hdr-in");
+            var logoA = lnk(null, null, BASE + "/");
+            logoA.appendChild(img(BASE + "/tagless-full.png", "logo-img", "tagless"));
+            var nav = mk("div", "nav");
+        })
     </script>
 </body>
 
