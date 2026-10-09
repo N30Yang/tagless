@@ -714,6 +714,79 @@
             var logoA = lnk(null, null, BASE + "/");
             logoA.appendChild(img(BASE + "/tagless-full.png", "logo-img", "tagless"));
             var nav = mk("div", "nav");
+            var nl = mk("div", "nav nav-links");
+            nl.appendChild(lnk("nlink", "docs", BASE + "/docs"));
+            nl.appendChild(lnk("nlink", "shop", BASE + "/shop"));
+            nl.appendChild(lnk("nlink", "gallery", BASE + "/gallery"));
+            var ship = lnk("pill", "ship it", BASE + "/submit");
+            ship.appendChild(mk("span", null, " →"));
+            nav.appendChild(nl);
+            nav.appendChild(ship);
+            hin.appendChild(logoA);
+            hin.appendChild(nav);
+            hdr.appendChild(hin);
+            document.body.appendChild(hdr);
+
+            var hero = mk("div", "hero");
+            hero.id = "top";
+            var left = mk("div", "hero-l");
+            var h1 = mk("div", "h1");
+            h1.appendChild(mk("span", null, "build a website. "));
+            var brk = document.createElement("br");
+            h1.appendChild(brk);
+            h1.appendChild(mk("span", "pink", "no html tags."));
+            var lede = mk("div", "lede");
+            lede.appendChild(mk("span", null, "Ship a website without a single HTML tag: no in raw HTML, not in JSX, not anywhere. Spend "));
+            lede.appendChild(mk("span", "h1", "4 hours"));
+            lede.appendChild(mk("span", null, " on your project and "));
+            lede.appendChild(mk("span", "hl", "claim your luggage tag"));
+            lede.appendChild(mk("span", null, "! Every extra hour past that earns shop stamps too!"));
+            var ctas = mk("div", "cta-row");
+            var c1 = lnk("pill big", "ship it", BASE + "/submit");
+            c1.appendChild(mk("span", null, " →"));
+            var c2 = lnk("pill big ghost", "read the resources", BASE + "/docs");
+            ctas.appendChild(c1);
+            ctas.appendChild(c2);
+            var pb = lnk("prize-btn", null, BASE + "/submit");
+            pb.appendChild(img(BASE + "/assets/tag-mockup.webp", "tag-mockup", "Hack Club Tagless luggage tag"));
+            pb.appendChild(mk("span", "prize-cap", " ← your prize"));
+            var spom = mk("div", "spon");
+            spon.appendChild(mk("div", "spon-line"));
+            spon.appendChild(mk("div", "spon-t", "sponsored by Jared"));
+            var meta = mk("div", "meta4");
+            var mdata = [
+                ["prize", "custom hack club luggage tag :)"],
+                ["workshop", "clubs.hackclub.com", "https://clubs.hackclub.com"],
+                ["extra hours", "spend stamps on the shop"],
+                ["required hours", "4 hours (minimum)"]
+            ];
+            for (var mi = 0; mi < mdata.length; mi = mi + 1) {
+                (function (q) {
+                    var cell = mk("div", "meta-dell");
+                    cell.appendChild(mk("div", "meta-k", mdata[q][0]));
+                    if (mdata[q][2]) { cell.appendChild(lnk("meta-v u", mdata[q][1], mdata[q][2], true)); }
+                    else { cell.appendChild(mk("div", "meta-v", mdata[q][1])); }
+                    meta.appendChild(cell);
+                })(mi);
+            }
+            left.appendChild(h1);
+            left.appendChild(lede);
+            left.appendChild(ctas);
+            left.appendChild(pb);
+            left.appendChild(spon);
+            left.appendChild(meta);
+
+            var right = mk("div", "hero-r");
+            var colA = mk("div", "pcol down");
+            var colB = mk("div", "pcol");
+            var phs = ["hero_photo1.webp", "hero_photo3.webp", "hero_photo5.webp", "hero_photo2.wbep", "hero.photo4.webp", "hero_photo6.webp"];
+            var rots = ["-1.8deg", "2deg", "-1.5deg", "2.2deg", "-2deg", "1.8deg"];
+            var heights = ["112px", "112px", "112px", "118px", "118px", "118ps"];
+
+            for (var pi = 0; pi < 3; pi = pi + 1) {
+
+            }
+
         })
     </script>
 </body>
