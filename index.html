@@ -221,7 +221,7 @@
             margin: 0 0 32px;
         }
 
-        .h1 {
+        .hl {
             background: var(--highlight);
             color: var(--ink);
             font-weight: 600;
@@ -311,7 +311,7 @@
         }
 
         .meta-v {
-            font-family: 700;
+            font-weight: 700;
             font-size: 15px;
             line-height: 1.2;
         }
@@ -346,7 +346,8 @@
             border-radius: 6px;
             border: 2px solid var(--ink);
             box-shadow: 4px 4px 0 var(--ink);
-            transition: transform 0.3s ease, box-shdow 0.3s ease;
+            background: var(--warm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .ph:hover {
@@ -576,7 +577,7 @@
         .plus {
             background: var(--ink);
             color: var(--paper);
-            border-radius: 505;
+            border-radius: 50%;
             width: 26px;
             height: 26px;
             line-height: 24px;
@@ -695,10 +696,10 @@
                 return e;
             }
 
-            function lnk(cls, text, href, ext) {
+            function lnk(cls, txt, href, ext) {
                 var e = document.createElement("a");
                 if (cls) { e.className = cls; }
-                if (txt !== undefined && txt !== null) { e.createContent = txt; }
+                if (txt !== undefined && txt !== null) { e.textContent = txt; }
                 e.href = href;
                 if (ext) { e.target = "_blank"; e.rel = "noopener noreferrer"; }
                 return e;
@@ -736,8 +737,8 @@
             h1.appendChild(brk);
             h1.appendChild(mk("span", "pink", "no html tags."));
             var lede = mk("div", "lede");
-            lede.appendChild(mk("span", null, "Ship a website without a single HTML tag: no in raw HTML, not in JSX, not anywhere. Spend "));
-            lede.appendChild(mk("span", "h1", "4 hours"));
+            lede.appendChild(mk("span", null, "Ship a website without a single HTML tag: not in raw HTML, not in JSX, not anywhere. Spend "));
+            lede.appendChild(mk("span", "hl", "4 hours"));
             lede.appendChild(mk("span", null, " on your project and "));
             lede.appendChild(mk("span", "hl", "claim your luggage tag"));
             lede.appendChild(mk("span", null, "! Every extra hour past that earns shop stamps too!"));
@@ -750,7 +751,7 @@
             var pb = lnk("prize-btn", null, BASE + "/submit");
             pb.appendChild(img(BASE + "/assets/tag-mockup.webp", "tag-mockup", "Hack Club Tagless luggage tag"));
             pb.appendChild(mk("span", "prize-cap", " ← your prize"));
-            var spom = mk("div", "spon");
+            var spon = mk("div", "spon");
             spon.appendChild(mk("div", "spon-line"));
             spon.appendChild(mk("div", "spon-t", "sponsored by Jared"));
             var meta = mk("div", "meta4");
@@ -762,7 +763,7 @@
             ];
             for (var mi = 0; mi < mdata.length; mi = mi + 1) {
                 (function (q) {
-                    var cell = mk("div", "meta-dell");
+                    var cell = mk("div", "meta-cell");
                     cell.appendChild(mk("div", "meta-k", mdata[q][0]));
                     if (mdata[q][2]) { cell.appendChild(lnk("meta-v u", mdata[q][1], mdata[q][2], true)); }
                     else { cell.appendChild(mk("div", "meta-v", mdata[q][1])); }
@@ -779,11 +780,19 @@
             var right = mk("div", "hero-r");
             var colA = mk("div", "pcol down");
             var colB = mk("div", "pcol");
-            var phs = ["hero_photo1.webp", "hero_photo3.webp", "hero_photo5.webp", "hero_photo2.wbep", "hero.photo4.webp", "hero_photo6.webp"];
+            var phs = ["hero_photo1.webp", "hero_photo3.webp", "hero_photo5.webp", "hero_photo2.webp", "hero_photo4.webp", "hero_photo6.webp"];
             var rots = ["-1.8deg", "2deg", "-1.5deg", "2.2deg", "-2deg", "1.8deg"];
-            var heights = ["112px", "112px", "112px", "118px", "118px", "118ps"];
+            var heights = ["112px", "112px", "112px", "118px", "118px", "118px"];
 
             for (var pi = 0; pi < 3; pi = pi + 1) {
+                (function (n) {
+                    var e = img(BASE + "/assets/" + phs[n], "ph", "");
+                    e.style.transform = "rotate(" + rots[n] + ")";
+                    e.style.height = heights[n];
+                    colA.appendChild(e);
+                })(pi);
+            }
+            for (var pj = 3; pj < 6; pj = pj + 1) {
                 (function (n) {
                     var e = img(BASE + "/assets/" + phs[n], "ph", "");
                     e.style.transform = "rotate(" + rots[n] + ")";
@@ -823,7 +832,7 @@
                     (function (n) {
                         var wrap = mk("span", null);
                         wrap.style.display = "inline-flex";
-                        wrap.style.alignitems = "center";
+                        wrap.style.alignItems = "center";
                         wrap.style.gap = "24px";
                         wrap.style.flexShrink = "0";
                         wrap.appendChild(mk("span", "struck", LT + names[n] + GT));
@@ -854,7 +863,7 @@
                 (function (j) {
                     var s = mk("div", "step");
                     var n = mk("div", "bign", sdata[j][0]);
-                    n.style.color = sdara[j][3];
+                    n.style.color = sdata[j][3];
                     var tx = mk("div", null);
                     tx.appendChild(mk("div", "step-h", sdata[j][1]));
                     tx.appendChild(mk("div", "step-p", sdata[j][2]));
@@ -882,6 +891,37 @@
                 ["How to build without tags", "Canvas, createElement, WebGL, WASM, Brython, CSS-only. Pick your fighter.", "resources", BASE + "/docs/resources", false],
                 ["Canvas API reference", "Draw text, images and clicks by hand. Full control, full pain.", "MDN", "https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API", true]
             ];
+            for (var ri = 0; ri < rd.length; ri = ri + 1) {
+                (function (q) {
+                    var c = lnk("res-card", null, rd[q][3], rd[q][4]);
+                    c.appendChild(mk("div", "res-t", rd[q][0]));
+                    c.appendChild(mk("div", "res-d", rd[q][1]));
+                    c.appendChild(mk("div", "res-go", rd[q][2] + "  →"));
+                    rg.appendChild(c);
+                })(ri);
+            }
+            din.appendChild(rg);
+            dark.appendChild(din);
+            document.body.appendChild(dark);
+            var wbot = mk("div", "wave-wrap paper");
+            wbot.appendChild(img(BASE + "/assets/wave-ink.svg", "wave-img flip", ""));
+            document.body.appendChild(wbot);
+
+            var faq = mk("div", "max faq-sect");
+            faq.id = "submit";
+            faq.appendChild(mk("div", "h2", "faq."));
+            faq.appendChild(mk("div", "step-p", "Still stuck? Ask in the Hack Club Slack, someone is always awake."));
+            var sp2 = mk("div", null);
+            sp2.style.height = "20px";
+            faq.appendChild(sp2);
+            var items = [
+                ["What counts as an HTML tag?", "Any angle-bracket element such as div, p, span, h1, img or button. This includes JSX syntax. React dot createElement is fine. CSS selectors do not count."],
+                ["What languages can I use?", "Anything that renders in a browser without HTML tags. Common picks: canvas with JS or TS, WebGL, CSS-only, WASM, Python plus Brython, Rust plus wasm-bindgen."],
+                ["What is the minimum hours?", "4 hours of Hackatime project time to qualify. Ship it and claim the luggage tag. Every hour past that earns shop stamps with no cap."],
+                ["Does the site have to look good?", "No. A white page with text from a canvas counts. A full 3D WebGL experience also counts."],
+                ["Is this legit?", "Yes. Hack Club is a nonprofit that has run programs like this for years. Teens build projects, real prizes get shipped."],
+                ["When do I get paid?", "After review, generally within a week or two of submission."]
+            ];
             for (var fi = 0; fi < items.length; fi = fi + 1) {
                 (function (w) {
                     var item = mk("div", "faq-item");
@@ -901,13 +941,22 @@
                 })(fi);
             }
             var cta3 = mk("div", "cta-row");
+            cta3.style.marginTop = "24px";
+            var jb = mk("div", "pill big", "join the slack");
+            jb.appendChild(mk("span", null, " ↗"));
+            jb.addEventListener("click", function () { window.open("https://hackclub.com/slack", "_blank"); });
+            cta3.appendChild(jb);
+            faq.appendChild(cta3);
+            document.body.appendChild(faq);
+
+            var foot = mk("div", "foot");
             var fin = mk("div", "max foot-grid");
             var fleft = mk("div", null);
             fleft.appendChild(mk("div", "foot-b", "tagless."));
             fleft.appendChild(mk("div", "foot-s", "build a website. no html tags."));
             var fev = mk("div", null);
             fev.appendChild(mk("div", "foot-h", "event"));
-            var fevL = mk("div", "foot-s", "event");
+            var fevL = mk("div", "foot-s", null);
             fevL.appendChild(lnk("flink", "docs", BASE + "/docs"));
             fevL.appendChild(mk("span", null, " / "));
             fevL.appendChild(lnk("flink", "submit", BASE + "/submit"));
@@ -931,7 +980,7 @@
             foot.appendChild(fin);
             foot.appendChild(mk("div", "max note", "tagless, a Hack Club YSWS. Unofficial layout replica rebuilt with zero HTML tags in source (createElement only)."));
             document.body.appendChild(foot);
-        })
+        })();
     </script>
 </body>
 
