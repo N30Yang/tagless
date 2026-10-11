@@ -869,6 +869,68 @@
 
             var wtop = mk("div", "wave-wrap warm");
             wtop.appendChild(img(BASE + "/assets/wave-ink.svg", "wave-img", ""));
+            document.body.appendChild(wtop);
+            var dark = mk("div", "dark");
+            dark.id = "resources";
+            var din = mk("div", "max");
+            din.appendChild(mk("div", "kicker", "resources"));
+            din.appendChild(mk("div", "h2", "need a nudge?"));
+            var rg = mk("div", "res-grid");
+            var rd = [
+                ["Hackatime setup guide", "Free, open source time tracking. This is how your 4 hours get counted.", "hackatime.hackclub.com", "https://hackatime.hackclub.com/my/wakatime_setup", true],
+                ["Hack Club Slack", "Stuck? Someone is always awake to help.", "hackclub.com/slack", "https://hackclub.com/slack", true],
+                ["How to build without tags", "Canvas, createElement, WebGL, WASM, Brython, CSS-only. Pick your fighter.", "resources", BASE + "/docs/resources", false],
+                ["Canvas API reference", "Draw text, images and clicks by hand. Full control, full pain.", "MDN", "https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API", true]
+            ];
+            for (var fi = 0; fi < items.length; fi = fi + 1) {
+                (function (w) {
+                    var item = mk("div", "faq-item");
+                    var qrow = mk("div", "faq-q");
+                    qrow.appendChild(mk("span", null, items[w][0]));
+                    var plus = mk("span", "plus", "+");
+                    qrow.appendChild(plus);
+                    var ans = mk("div", "faq-a", items[w][1]);
+                    qrow.addEventListener("click", function () {
+                        var open = item.className.indexOf("open") > -1;
+                        if (open) { item.className = "faq-item"; plus.textContent = "+" }
+                        else { item.className = "faq-item open"; plus.textContent = "-"; }
+                    });
+                    item.appendChild(qrow);
+                    item.appendChild(ans);
+                    faq.appendChild(item);
+                })(fi);
+            }
+            var cta3 = mk("div", "cta-row");
+            var fin = mk("div", "max foot-grid");
+            var fleft = mk("div", null);
+            fleft.appendChild(mk("div", "foot-b", "tagless."));
+            fleft.appendChild(mk("div", "foot-s", "build a website. no html tags."));
+            var fev = mk("div", null);
+            fev.appendChild(mk("div", "foot-h", "event"));
+            var fevL = mk("div", "foot-s", "event");
+            fevL.appendChild(lnk("flink", "docs", BASE + "/docs"));
+            fevL.appendChild(mk("span", null, " / "));
+            fevL.appendChild(lnk("flink", "submit", BASE + "/submit"));
+            fevL.appendChild(mk("span", null, " / "));
+            fevL.appendChild(lnk("flink", "resources", BASE + "/docs/resources"));
+            fev.appendChild(fevL);
+            var fhc = mk("div", null);
+            fhc.appendChild(mk("div", "foot-h", "hack club"));
+            var fhcL = mk("div", "foot-s", null);
+            fhcL.appendChild(lnk("flink", "hackclub.com", "https://hackclub.com", true));
+            fhcL.appendChild(mk("span", null, " / "));
+            fhcL.appendChild(lnk("flink", "slack", "https://hackclub.com/slack", true));
+            fhcL.appendChild(mk("span", null, " / "));
+            fhcL.appendChild(lnk("flink", "github", "https://github.com/hackclub", true));
+            fhcL.appendChild(mk("span", null, " / "));
+            fhcL.appendChild(lnk("flink", "running a club?", "https://clubs.hackclub.com", true));
+            fhc.appendChild(fhcL);
+            fin.appendChild(fleft);
+            fin.appendChild(fev);
+            fin.appendChild(fhc);
+            foot.appendChild(fin);
+            foot.appendChild(mk("div", "max note", "tagless, a Hack Club YSWS. Unofficial layout replica rebuilt with zero HTML tags in source (createElement only)."));
+            document.body.appendChild(foot);
         })
     </script>
 </body>
