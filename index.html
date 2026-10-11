@@ -784,9 +784,91 @@
             var heights = ["112px", "112px", "112px", "118px", "118px", "118ps"];
 
             for (var pi = 0; pi < 3; pi = pi + 1) {
-
+                (function (n) {
+                    var e = img(BASE + "/assets/" + phs[n], "ph", "");
+                    e.style.transform = "rotate(" + rots[n] + ")";
+                    e.style.height = heights[n];
+                    colB.appendChild(e);
+                })(pj);
             }
+            right.appendChild(colA);
+            right.appendChild(colB);
+            hero.appendChild(left);
+            hero.appendChild(right);
+            document.body.appendChild(hero);
 
+            var ms = mk("div", "max mstrip");
+            ms.id = "photos";
+            for (var msi = 0; msi < phs.length; msi = msi + 1) {
+                (function (n) {
+                    var e = img(BASE + "/assets/" + phs[n], "ph", "");
+                    e.style.height = "125px";
+                    e.style.width = "auto";
+                    e.style.flexShrink = "0";
+                    ms.appendChild(e);
+                })(msi);
+            }
+            document.body.appendChild(ms);
+
+            var zone = mk("div", "mq-zone");
+            var mq = mk("div", "mq");
+            var track = mk("div", "mq-track");
+            var names = ["div", "span", "h1", "p", "img", "button", "a", "section", "ul", "table", "form", "nav", "footer", "main", "article", "input",];
+            function half() {
+                var h = mk("div", null);
+                h.style.display = "inline-flex";
+                h.style.gap = "24px";
+                h.style.flexShrink = "0";
+                for (var k = 0; k < names.length; k = k + 1) {
+                    (function (n) {
+                        var wrap = mk("span", null);
+                        wrap.style.display = "inline-flex";
+                        wrap.style.alignitems = "center";
+                        wrap.style.gap = "24px";
+                        wrap.style.flexShrink = "0";
+                        wrap.appendChild(mk("span", "struck", LT + names[n] + GT));
+                        wrap.appendChild(mk("span", "exx", "x"));
+                        h.appendChild(wrap);
+                    })(k);
+                }
+                return h;
+            }
+            track.appendChild(half());
+            track.appendChild(half());
+            mq.appendChild(track);
+            zone.appendChild(mq);
+            document.body.appendChild(zone);
+
+            var steps = mk("div", "steps");
+            steps.id = "steps";
+            var sin = mk("div", "max");
+            sin.appendChild(mk("div", "h2", "four steps. "));
+            var gs = mk("div", "grid-steps");
+            var sdata = [
+                ["1", "track your time", "Set up Hackatime (free, open source WakaTime). Create a project and log your hours. Minimum 4 hours to qualify.", "#1e54ff"],
+                ["2", "build a website", "Use any language or framework: Python, Rust, raw JS, whatever. The only rule: zero HTML tags anywhere in your code.", "#ff2d6f"],
+                ["3", "ship it", "After you complete 4 hours, deploy your site somewhere public. Then fill out the submission form!", "#5a2dc9"],
+                ["4", "get a tag", "After you ship your project, you will get reviewed. Once approved, you will get a slack message from our bot to claim your luggage tag. Spend more than 4 hours? Earn stamps to use in the shop!", "#2cc294"]
+            ];
+            for (var si = 0; si < sdata.length; si = si + 1) {
+                (function (j) {
+                    var s = mk("div", "step");
+                    var n = mk("div", "bign", sdata[j][0]);
+                    n.style.color = sdara[j][3];
+                    var tx = mk("div", null);
+                    tx.appendChild(mk("div", "step-h", sdata[j][1]));
+                    tx.appendChild(mk("div", "step-p", sdata[j][2]));
+                    s.appendChild(n);
+                    s.appendChild(tx);
+                    gs.appendChild(s);
+                })(si);
+            }
+            sin.appendChild(gs);
+            steps.appendChild(sin);
+            document.body.appendChild(steps);
+
+            var wtop = mk("div", "wave-wrap warm");
+            wtop.appendChild(img(BASE + "/assets/wave-ink.svg", "wave-img", ""));
         })
     </script>
 </body>
